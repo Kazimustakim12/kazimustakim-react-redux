@@ -50,23 +50,27 @@ const Products = () => {
   });
 
   const selectFilter = (e) => {
-    var getValue = e.target.options[e.target.selectedIndex].id;
     console.log(e.target.options[e.target.selectedIndex].id);
-    console.log(getValue);
+    console.log(e.target.value);
 
-    if (e.target.value === "All") {
+    let selectedValue = parseInt(e.target.options[e.target.selectedIndex].id);
+
+    if (e.target.value === "3") {
       getAllProducts();
       console.log("all");
     } else {
       let newData = [];
-      console.log(
-        getProducts.filter((res) => e.target.value === res.categoryId)
-      );
-      newData = getProducts.filter((res) => getValue === res.categoryId);
+      // newData = getProducts.find(
+      //   (res) => e.target.options[e.target.selectedIndex].id === res.categoryId
+      // );
+      newData = getProducts.filter((res) => selectedValue === res.categoryId);
+      // newData = getcategory.filter((res) => getValue === res.categoryId);
       console.log(newData);
       setProductsData(newData);
     }
   };
+
+  // wait
 
   return (
     <>
@@ -79,13 +83,14 @@ const Products = () => {
             value="{getcategory}"
             onChange={selectFilter.bind()}
           >
-            <option value="All" id="">
+            <option value="3" id="3"></option>
+            <option value="3" id="3">
               All
             </option>
-            <option value="Laptop" id="0">
+            <option value="0" id="0">
               Laptop
             </option>
-            <option value="Mobile" id="1">
+            <option value="1" id="1">
               Mobile
             </option>
           </select>

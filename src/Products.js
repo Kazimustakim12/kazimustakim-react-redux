@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import Data from "./Data";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Products = () => {
   const [getProducts, setProductsData] = useState([]);
-  // const [getcategory, setcategory] = useState([]);
   const [getcategory, setCategory] = useState([]);
 
   useEffect(() => {
@@ -20,7 +18,6 @@ const Products = () => {
     axios.get(`${url}`).then((res) => {
       // console.log(res["data"]);
       setProductsData(res["data"]);
-      // setAllProductsList(res["data"]);
     });
   };
 
@@ -29,22 +26,8 @@ const Products = () => {
     axios.get(`${url}`).then((res) => {
       console.log(res["data"]);
       setCategory(res["data"]);
-      // setAllProductsList(res["data"]);
     });
   };
-  // const category = getcategory.map((data) => {
-  //   return [data.id, data.id] = ["Laptop ", "Mobile"]
-  // });
-  // const byCategory = (user, getcategory) => {
-  //   if (getcategory) {
-  //     return user.categoryId === getcategory;
-  //   } else return user;
-  // };
-  // console.log(getProducts.filter((user) => byCategory(user, getcategory)));
-  // const productsList = (getProducts, getcategory) => {
-  //   return getProducts.filter((user) => byCategory(user, getcategory));
-  //   console.log(getProducts);
-  // };
 
   const products = getProducts.map((product) => {
     return (
@@ -106,7 +89,6 @@ const Products = () => {
               Mobile
             </option>
           </select>
-
           {products}
         </div>
       </div>

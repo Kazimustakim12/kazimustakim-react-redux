@@ -4,6 +4,8 @@ import axios from "axios";
 
 const Products = () => {
   const [getProducts, setProductsData] = useState([]);
+  const [filer, setfilter] = useState([]);
+
   const [getcategory, setCategory] = useState([]);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const Products = () => {
     axios.get(`${url}`).then((res) => {
       // console.log(res["data"]);
       setProductsData(res["data"]);
+      setfilter(res["data"]);
     });
   };
 
@@ -51,11 +54,11 @@ const Products = () => {
 
   const selectFilter = (e) => {
     console.log(e.target.options[e.target.selectedIndex].id);
-    console.log(e.target.value);
+    // console.log(e.target.value)s;
 
     let selectedValue = parseInt(e.target.options[e.target.selectedIndex].id);
 
-    if (e.target.value === "3") {
+    if (e.target.value === "All") {
       getAllProducts();
       console.log("all");
     } else {
@@ -63,7 +66,7 @@ const Products = () => {
       // newData = getProducts.find(
       //   (res) => e.target.options[e.target.selectedIndex].id === res.categoryId
       // );
-      newData = getProducts.filter((res) => selectedValue === res.categoryId);
+      newData = filer.filter((res) => selectedValue === res.categoryId);
       // newData = getcategory.filter((res) => getValue === res.categoryId);
       console.log(newData);
       setProductsData(newData);
@@ -80,17 +83,18 @@ const Products = () => {
           <select
             className="form-select"
             aria-label="Default select example"
-            value="{getcategory}"
             onChange={selectFilter.bind()}
           >
-            <option value="3" id="3"></option>
-            <option value="3" id="3">
+            <option value="" id="">
+              Filter By Category
+            </option>
+            <option value="All" id="3">
               All
             </option>
-            <option value="0" id="0">
+            <option value="laptops" id="0">
               Laptop
             </option>
-            <option value="1" id="1">
+            <option value="Mobiles" id="1">
               Mobile
             </option>
           </select>

@@ -43,8 +43,11 @@ const Products = () => {
             <p className="card-text">
               <small className="text-muted">{product.category}</small>
             </p>
-            <p className="card-text">{product.price}</p>
-            <p className="card-text">{product.price}</p>
+            <p className="card-text"> Price ${product.price}</p>
+            <p className="card-text">
+              {" "}
+              {product.categoryId == 0 ? "Laptop" : "Mobile"}
+            </p>
             <p className="card-text">{product.description}</p>
           </div>
         </div>

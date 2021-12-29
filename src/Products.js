@@ -94,12 +94,19 @@ const Products = () => {
             <option value="All" id="3">
               All
             </option>
-            <option value="laptops" id="0">
+            {/* <option value="laptops" id="0">
               Laptop
             </option>
             <option value="Mobiles" id="1">
               Mobile
-            </option>
+            </option> */}
+            {getcategory.map((cat) => {
+              return (
+                <option value={cat.name} id={cat.id}>
+                  {cat.name}
+                </option>
+              );
+            })}
           </select>
           {products}
         </div>
